@@ -1,0 +1,14 @@
+com\evaluate\eos\impl\controller\StatementController.class
+com\evaluate\eos\impl\service\StatementService.class
+com\evaluate\eos\impl\pojo\StatementPojo.class
+com\evaluate\eos\impl\util\CommonFun.class
+com\evaluate\eos\impl\controller\PrimetonTest.class
+com\evaluate\eos\impl\pojo\PrimetonTestPojo.class
+com\evaluate\eos\impl\client\StatementClient.class
+com\evaluate\eos\impl\service\PrimetonService.class
+com\evaluate\eos\impl\impl\StatementServiceImpl.class
+com\evaluate\eos\impl\pojo\BaseVO.class
+com\evaluate\eos\impl\impl\PrimetonServiceImpl.class
+com\evaluate\eos\impl\mappers\PrimetonMapper.class
+com\evaluate\eos\impl\mappers\StatementMapper.class
+com\evaluate\eos\impl\client\fallback\StatementClientFallback.class
