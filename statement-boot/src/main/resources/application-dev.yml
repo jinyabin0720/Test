@@ -1,0 +1,131 @@
+server:
+  port: 9090
+  servlet:
+    context-path: /kpi
+
+
+
+
+spring:
+  application:
+    name: ccms-statement
+  jpa: 
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+  main:
+    allow-bean-definition-overriding: true
+  datasource:
+    ### 数据库配置
+    url: jdbc:mysql://127.0.0.1:3306/statement?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true&useSSL=true&serverTimezone=GMT%2B8
+    username: root
+    password: root
+    driverClassName: com.mysql.cj.jdbc.Driver
+    hikari:
+      login-timeout: 20000
+      ### 最小空闲连接数量
+      minimum-idle: 5
+      ### 空闲连接存活最大时间，默认600000（10分钟）
+      idle-timeout: 180000
+      ### 连接池最大连接数，默认是10
+      maximum-pool-size: 10
+      ### 此属性控制从池返回的连接的默认自动提交行为,默认值：true
+      auto-commit: true
+      ### 此属性控制池中连接的最长生命周期，值0表示无限生命周期，默认1800000即30分钟
+      max-lifetime: 1800000
+      ### 数据库连接超时时间,默认30秒，即30000
+      connection-timeout: 30000
+      ### 测试连接数据库
+      connection-test-query: SELECT 1
+    druid: 
+      stat-view-servlet:
+        enabled: true
+        allow: 0.0.0.0/0
+      filter:
+        stat:
+          enabled: true
+          
+mybatis-plus:
+  ### 扫描mapper的xml文件
+  mapper-locations: classpath:/mappers/*.xml
+  ###实体扫描，多个package用逗号或者分号分隔
+  typeAliasesPackage: com.chinacoal.microservice.model
+    #枚举和数据库自动转化配置
+  typeEnumsPackage: com.chinacoal.microservice.enums
+  global-config:
+    #主键类型  0:"数据库ID自增", 1:"用户输入ID",2:"全局唯一ID (数字类型唯一ID)", 3:"全局唯一ID UUID";
+    id-type: 1
+    #字段策略 0:"忽略判断",1:"非 NULL 判断"),2:"非空判断"
+    field-strategy: 1
+    #驼峰下划线转换
+    db-column-underline: true
+    #刷新mapper 调试神器
+    refresh-mapper: true
+    #数据库大写下划线转换
+    capital-mode: true
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+    #配置JdbcTypeForNull
+    jdbc-type-for-null: 'null'
+  
+management:
+  endpoints: 
+    web: 
+      exposure:
+        include: hystrix.stream,health,info,loggers,eos
+ 
+
+eureka:
+  client:
+    enabled: false
+    service-url:
+      defaultZone: http://localhost:8999/eureka
+  instance:
+    prefer-ip-address: true
+    lease-renewal-interval-in-seconds: 10
+    lease-expiration-duration-in-seconds: 30
+
+ 
+hystrix:
+  config:
+    stream:
+      maxConcurrentConnections: 20
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: true
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000
+ 
+feign:
+  hystrix:
+    enabled: true
+ 
+eos:
+  application:
+    sys-code: CCMS
+    sys-key: 0176c8bde0b14ca0ae769454187c9b38
+    app-inst-grp-code: default
+  springfox:
+    enabled: true
+  logging:
+    outbound:
+      enabled: true
+      hh-enabled: true
+    inbound:
+      enabled: true
+      hh-enabled: true
+
+    
+apollo:
+  bootstrap:
+    enabled: false
+  meta: http://172.20.8.81:32191/
+
+#打印sql,开发环境配置可以查看sql,其他环境请删除该部分
+  logging:
+    level: debug
+    level.com.chinacoal.microservice.impl.mapper: debug
+    path: logs/
+    file: sys.log

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/performance-api" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/performance-api/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/performance-boot" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/performance-boot/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/performance-boot/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/performance-impl" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/performance-impl/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/performance-impl/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/statement-api" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/statement-boot" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/statement-impl" charset="UTF-8" />
+  </component>
+</project>
