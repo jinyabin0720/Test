@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.evaluate.eos.impl.mappers.StatementProfitMapper">
+
+    <!--通用查询映射结果-->
+    <resultMap id="BaseResultMap" type="com.evaluate.eos.impl.pojo.StatementProfitPojo">
+        <id column="ANALYZE_PROFITS_ID" property="analyzeProfitsId"/>
+        <result column="PERIOD_CODE" property="periodCode"/>
+        <result column="OU_NAME" property="ouName"/>
+        <result column="BUDGET" property="budget"/>
+        <result column="MONTH_COMPLETE" property="monthComplete"/>
+        <result column="YEAR_TOTAL" property="yearTotal"/>
+        <result column="BUDGET_COMPLETE_DEGREE" property="budgetCompleteDegree"/>
+        <result column="COMPARE_TOTAL" property="compareTotal"/>
+        <result column="COMPARE_TOTAL_PERCENT" property="compareTotalPercent"/>
+        <result column="CREATED_BY" property="createdBy"/>
+        <result column="CREATION_DATE" property="creationDate"/>
+        <result column="LAST_UPDATED_BY" property="lastUpdatedBy"/>
+        <result column="LAST_UPDATE_DATE" property="lastUpdateDate"/>
+        <result column="DISPLAY_ORDER" property="displayOrder"/>
+    </resultMap>
+    <!--通用List查询映射结果-->
+    <sql id="Base_Column_List">
+        xip_ba_data_analyze_profits.ANALYZE_PROFITS_ID,
+        xip_ba_data_analyze_profits.PERIOD_CODE,
+        xip_ba_data_analyze_profits.OU_NAME,
+        xip_ba_data_analyze_profits.BUDGET,
+        xip_ba_data_analyze_profits.MONTH_COMPLETE,
+        xip_ba_data_analyze_profits.YEAR_TOTAL,
+        xip_ba_data_analyze_profits.BUDGET_COMPLETE_DEGREE,
+        xip_ba_data_analyze_profits.COMPARE_TOTAL,
+        xip_ba_data_analyze_profits.COMPARE_TOTAL_PERCENT,
+        xip_ba_data_analyze_profits.CREATED_BY,
+        xip_ba_data_analyze_profits.CREATION_DATE,
+        xip_ba_data_analyze_profits.LAST_UPDATED_BY,
+        xip_ba_data_analyze_profits.LAST_UPDATE_DATE,
+        xip_ba_data_analyze_profits.DISPLAY_ORDER
+    </sql>
+
+
+    <select id="statementProfitList" parameterType="com.evaluate.eos.impl.pojo.StatementProfitPojo" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"></include>
+        FROM
+        xip_ba_data_analyze_profits
+        <where>
+            <if test="periodCode!=null">
+                AND PERIOD_CODE LIKE concat('%',#{periodCode},'%')
+            </if>
+
+            <if test="ouName!=null">
+                AND OU_NAME LIKE concat('%',#{ouName},'%')
+            </if>
+
+        </where>
+        ORDER by xip_ba_data_analyze_profits.DISPLAY_ORDER ASC
+    </select>
+
+
+
+
+
+</mapper>
